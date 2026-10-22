@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101c35">
+  <meta name="description" content="A short, practical cyber-safety awareness lesson and anonymous before-and-after quiz for college students.">
+  <title>Safe Signal — Cyber Safety for Everyday Life</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Safe Signal home" data-home>
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 36 36"><path d="M18 3.5 30 8v8.3c0 7.5-4.7 13.5-12 16.2C10.7 29.8 6 23.8 6 16.3V8l12-4.5Z"/><path d="m12.3 18.3 3.8 3.8 7.8-8.2"/></svg>
+      </span>
+      <span>safe<span class="brand-accent">signal</span></span>
+    </a>
+    <div class="topbar-right">
+      <span class="local-badge"><span class="local-dot"></span> Private on this device</span>
+      <button class="text-button" id="reset-button" type="button" hidden>Start over</button>
+    </div>
+  </header>
+
+  <main id="main" class="shell">
+    <section id="home-view" class="view hero-grid" aria-labelledby="home-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> A 7-minute digital safety check-in</div>
+        <h1 id="home-title">Pause. Check.<br><span class="gradient-text">Stay in control.</span></h1>
+        <p class="hero-lead">A quick, practical cyber-safety activity for college life. Learn to spot common traps, make safer choices and know where to get help.</p>
+        <div class="hero-actions">
+          <button class="button button-primary" id="start-button" type="button">Begin the check-in <span aria-hidden="true">→</span></button>
+          <span class="duration-note"><span aria-hidden="true">◷</span> About 7 minutes · 6 questions</span>
+        </div>
+        <div class="trust-row">
+          <span><span class="check-dot">✓</span> No login</span>
+          <span><span class="check-dot">✓</span> No personal details</span>
+          <span><span class="check-dot">✓</span> Fictional examples</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+        <div class="art-glow"></div>
+        <div class="phone-card">
+          <div class="phone-top"><span class="phone-camera"></span><span class="phone-time">09:41</span><span class="phone-signal">● ● ●</span></div>
+          <div class="message-label">MESSAGE REQUEST <span>now</span></div>
+          <div class="message-avatar">!</div>
+          <div class="message-title">Your account is locked</div>
+          <div class="message-copy">Verify now to avoid losing access. <span class="fake-link">secure-login.example</span></div>
+          <div class="message-warning"><span>⌁</span><span>Urgency is a reason to pause.</span></div>
+          <div class="message-actions"><span>Ignore</span><span>Report</span></div>
+        </div>
+        <div class="float-chip chip-shield"><span class="mini-shield">✓</span> Think before you tap</div>
+        <div class="float-chip chip-lock"><span class="mini-lock">⌑</span> Safer habits, every day</div>
+        <div class="art-caption">A suspicious message is shown as a fictional example.</div>
+      </div>
+
+      <div class="home-bottom">
+        <div class="feature-card"><span class="feature-icon icon-link">↗</span><span><b>Spot the signal</b><small>Links, urgency &amp; impersonation</small></span></div>
+        <div class="feature-card"><span class="feature-icon icon-lock">⌑</span><span><b>Protect your access</b><small>Passwords, passkeys &amp; MFA</small></span></div>
+        <div class="feature-card"><span class="feature-icon icon-rupee">₹</span><span><b>Keep payments safe</b><small>UPI, OTPs &amp; what to do next</small></span></div>
+        <div class="field-note"><span class="field-note-icon">✳</span><span><b>For a field project</b><small>Compare your score before and after the short lesson.</small></span></div>
+      </div>
+    </section>
+
+    <section id="quiz-view" class="view content-view" aria-labelledby="quiz-heading" hidden>
+      <div class="content-topline">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span><span id="quiz-kicker">BEFORE THE LESSON</span></div><h1 id="quiz-heading">Quick knowledge check</h1></div>
+        <div class="step-pill" id="quiz-step" aria-live="polite">Question 1 of 6</div>
+      </div>
+      <div class="progress-track"><div id="progress-fill" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0"></div></div>
+      <div class="quiz-layout">
+        <aside class="quiz-aside"><span class="aside-number" id="question-number">01</span><span class="aside-rule"></span><p id="quiz-aside-copy">Go with what you would do in real life. There are no trick questions.</p><div class="aside-foot"><span class="aside-dot"></span><span id="quiz-aside-label">BASELINE CHECK</span></div></aside>
+        <div class="question-panel">
+          <div class="topic-tag" id="topic-tag">PHISHING &amp; LINKS</div>
+          <h2 id="question-text">Question text</h2>
+          <p class="scenario" id="question-scenario" hidden></p>
+          <div class="options" id="options" role="group" aria-label="Answer choices"></div>
+          <div class="feedback" id="feedback" aria-live="polite" hidden></div>
+          <div class="question-footer"><span class="select-hint" id="select-hint">Choose one answer to continue</span><button class="button button-primary button-next" id="next-button" type="button" disabled>Continue <span aria-hidden="true">→</span></button></div>
+        </div>
+      </div>
+      <div class="bottom-note"><span>ⓘ</span> These scenarios are fictional and do not open links or request sensitive information.</div>
+    </section>
+
+    <section id="lesson-view" class="view content-view" aria-labelledby="lesson-heading" hidden>
+      <div class="content-topline lesson-heading-row">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> THE 3-MINUTE GUIDE</div><h1 id="lesson-heading">Small checks. Safer choices.</h1></div>
+        <div class="lesson-time"><span>◷</span> Three short lessons</div>
+      </div>
+      <p class="section-intro">You don’t need to be a tech expert. A few calm habits can help you spot pressure tactics and protect your accounts.</p>
+      <div class="lesson-grid">
+        <article class="lesson-card lesson-blue">
+          <div class="lesson-card-top"><span class="lesson-icon">↗</span><span class="lesson-index">01 / 03</span></div>
+          <h2>Pause on links</h2>
+          <p>Scam messages can copy familiar logos and create urgency. A familiar design does not prove a message is genuine.</p>
+          <ul><li>Check the full sender and web address.</li><li>Don’t use a link in an unexpected urgent message.</li><li>Open the official app or type a known address yourself.</li></ul>
+          <div class="example-strip"><span class="example-icon">!</span><span><b>Red flag</b><small>“Act now or your account will close.”</small></span></div>
+        </article>
+        <article class="lesson-card lesson-violet">
+          <div class="lesson-card-top"><span class="lesson-icon">⌑</span><span class="lesson-index">02 / 03</span></div>
+          <h2>Protect sign-ins</h2>
+          <p>If one password is exposed, reusing it can put other accounts at risk. Add another layer where it’s available.</p>
+          <ul><li>Use a different, long password for each account.</li><li>Use a password manager or passkey if available.</li><li>Turn on multi-factor authentication (MFA).</li></ul>
+          <div class="example-strip"><span class="example-icon">✓</span><span><b>Good habit</b><small>Unique password + MFA for important accounts.</small></span></div>
+        </article>
+        <article class="lesson-card lesson-teal">
+          <div class="lesson-card-top"><span class="lesson-icon">₹</span><span class="lesson-index">03 / 03</span></div>
+          <h2>Slow down payments</h2>
+          <p>Scammers may impersonate support staff or pressure you to “verify” a payment. Keep payment secrets to yourself.</p>
+          <ul><li>Never share an OTP, UPI PIN or screen with a stranger.</li><li>You don’t need a UPI PIN or OTP to receive money.</li><li>Verify payment requests through a trusted channel.</li></ul>
+          <div class="example-strip"><span class="example-icon">!</span><span><b>Remember</b><small>Entering your UPI PIN authorizes a payment.</small></span></div>
+        </article>
+      </div>
+      <div class="help-banner"><div class="help-symbol">＋</div><div><b>If money is lost to online financial fraud in India</b><p>Contact your bank or payment provider promptly and report it through the National Cyber Crime Reporting Portal.</p></div><a href="https://cybercrime.gov.in/" target="_blank" rel="noopener noreferrer">Report at cybercrime.gov.in <span aria-hidden="true">↗</span></a><div class="helpline">1930 <small>National cybercrime helpline</small></div></div>
+      <div class="lesson-footer"><span class="privacy-reminder"><span class="check-dot">✓</span> No passwords, OTPs or personal details are collected here.</span><button class="button button-primary" id="posttest-button" type="button">Take the after-lesson quiz <span aria-hidden="true">→</span></button></div>
+    </section>
+
+    <section id="results-view" class="view content-view" aria-labelledby="results-heading" hidden>
+      <div class="results-hero">
+        <div class="results-copy"><div class="eyebrow"><span class="eyebrow-line"></span> YOUR CHECK-IN IS COMPLETE</div><h1 id="results-heading">Awareness grows<br><span class="gradient-text">one choice at a time.</span></h1><p>Your scores show what you knew before the guide and what you answered afterwards. Use the tips as reminders, not as a test of your worth.</p></div>
+        <div class="score-change"><span class="score-change-label">SCORE CHANGE</span><strong id="score-gain">+0</strong><span class="score-change-unit">percentage points</span><span class="score-change-caption" id="score-caption">You completed both check-ins.</span></div>
+      </div>
+      <div class="score-grid">
+        <article class="score-card"><div class="score-head"><span>BEFORE THE GUIDE</span><span class="score-dot dot-before"></span></div><div class="score-line"><strong id="before-score">0%</strong><span id="before-count">0 of 6 correct</span></div><div class="score-track"><div id="before-bar" class="score-bar before-bar"></div></div></article>
+        <article class="score-card"><div class="score-head"><span>AFTER THE GUIDE</span><span class="score-dot dot-after"></span></div><div class="score-line"><strong id="after-score">0%</strong><span id="after-count">0 of 6 correct</span></div><div class="score-track"><div id="after-bar" class="score-bar after-bar"></div></div></article>
+      </div>
+      <div class="takeaways-panel"><div><div class="eyebrow"><span class="eyebrow-line"></span> TAKE THESE WITH YOU</div><h2>Three habits to keep</h2></div><div class="takeaway-list"><div><span>01</span><p><b>Pause</b> when a message creates urgency or fear.</p></div><div><span>02</span><p><b>Verify</b> through an official app, website or known contact.</p></div><div><span>03</span><p><b>Protect</b> passwords, OTPs, UPI PINs and recovery codes.</p></div></div></div>
+      <div class="results-foot"><p><b>Using this for a field project?</b> This prototype stores scores on this device and does not measure long-term behaviour. Download the anonymous score summary for your group report; it contains no names or answer choices.</p><div class="results-actions"><button class="button button-secondary" id="export-button" type="button">Download anonymous score <span aria-hidden="true">↓</span></button><button class="button button-primary" id="again-button" type="button">Try the activity again <span aria-hidden="true">↻</span></button></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main"><span>safe<span class="brand-accent">signal</span></span><span>A student awareness prototype · Built for safer everyday internet use</span></div>
+    <details class="sources"><summary>Sources &amp; learning references</summary><div class="source-links"><a href="https://www.cert-in.org.in/s2cMainServlet?VLCODE=CIAD-2024-0050&amp;pageid=PUBVLNOTES02" target="_blank" rel="noopener noreferrer">CERT-In: Preventing Online Scams advisory</a><a href="https://www.cert-in.org.in/PDF/CSH_Booklet25.pdf" target="_blank" rel="noopener noreferrer">CERT-In: Digital Safety Compass Handbook</a><a href="https://cybercrime.gov.in/" target="_blank" rel="noopener noreferrer">National Cyber Crime Reporting Portal</a></div><small>Learning tips are simplified for this student activity. For incidents, use official reporting channels and follow your bank or service provider’s guidance.</small></details>
+    <div class="footer-last"><span>Fictional examples · No tracking · No accounts</span><span>Designed for a college cyber-safety field project</span></div>
+  </footer>
+</body>
+</html>
